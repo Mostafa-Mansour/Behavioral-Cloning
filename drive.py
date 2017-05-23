@@ -15,6 +15,7 @@ from io import BytesIO
 from keras.models import load_model
 import h5py
 from keras import __version__ as keras_version
+import tensorflow as tf
 
 sio = socketio.Server()
 app = Flask(__name__)
@@ -111,29 +112,31 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # check that model Keras version is same as local Keras version
-    f = h5py.File(args.model, mode='r')
-    model_version = f.attrs.get('keras_version')
-    keras_version = str(keras_version).encode('utf8')
+    
+    with tf.device('/cpu:0'):
+        f = h5py.File(args.model, mode='r')
+        model_version = f.attrs.get('keras_version')
+        keras_version = str(keras_version).encode('utf8')
 
-    if model_version != keras_version:
-        print('You are using Keras version ', keras_version,
-              ', but the model was built using ', model_version)
+        if model_version != keras_version:
+            print('You are using Keras version ', keras_version,
+                  ', but the model was built using ', model_version)
 
-    model = load_model(args.model)
+        model = load_model(args.model)
 
-    if args.image_folder != '':
-        print("Creating image folder at {}".format(args.image_folder))
-        if not os.path.exists(args.image_folder):
-            os.makedirs(args.image_folder)
+        if args.image_folder != '':
+            print("Creating image folder at {}".format(args.image_folder))
+            if not os.path.exists(args.image_folder):
+                os.makedirs(args.image_folder)
+            else:
+                shutil.rmtree(args.image_folder)
+                os.makedirs(args.image_folder)
+            print("RECORDING THIS RUN ...")
         else:
-            shutil.rmtree(args.image_folder)
-            os.makedirs(args.image_folder)
-        print("RECORDING THIS RUN ...")
-    else:
-        print("NOT RECORDING THIS RUN ...")
+            print("NOT RECORDING THIS RUN ...")
 
-    # wrap Flask application with engineio's middleware
-    app = socketio.Middleware(sio, app)
+        # wrap Flask application with engineio's middleware
+        app = socketio.Middleware(sio, app)
 
-    # deploy as an eventlet WSGI server
-    eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
+        # deploy as an eventlet WSGI server
+        eventlet.wsgi.server(eventlet.listen(('', 4567)), app)
