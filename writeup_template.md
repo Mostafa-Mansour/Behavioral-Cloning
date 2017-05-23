@@ -82,11 +82,17 @@ After training the network, the final model was (saved)[model.h5]. The model was
 #### 5. Summarize the results
 
 ##### 5.1. Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road. Also, I asked my friends to collect me more data using the same procedures, keeping the vehicle driving on the road and making a combination of center lane driving and recovering from both sides. Also, we have driven in both direction to make data balancing instead of flipping the image and inverse the steering angle implicitly. I thought changing the driving direction have an advantage on just flipping the image. we collect the data from the center,left and right cameras for the purpose of augmentation. An example of these image can be shown below
+
 ![alt text][image1]
+
 As stated before, all the image content can be confused for our network because of trees, sky and other objects that do not affect our decision to steer the wheel with a specific angle in a specific direction. What makes sense is how the road looks like that is why I cropped a part of every image to get only the valuable view, the road sides. An example of such images can be shown below
+
 ![alt text][image2]
+
 ##### 5.2. Normalizing the input is one of the most important tricks in any convolution neural network. It allows the network to learn better. So, my model started with a normalization layer with values obtained from Nvidia paper. an example of the images before and after normalization can be shown below
+
 ![alt text][image3]
+
 After that my network architecture is started with 6 convolution layers and 4 connected layers. These convolution layers allow the network to be more observable and get important details like different road sides ( lane lines, platform, bridge side or without any side ). Using 'ELU' as an activation function will allow the network to introduce the nonlinearity and to overcome the problem of gradient vanishing. At the output layer a "tanh" activation function is used to give normalization from -1 to 1 to the steering wheel. "tanh" activation function gives and advantage over other activation functions for time series network, in our case the output layer can be considered as a time series action because steering a wheel will change over time.
 ##### 5.3. The model was trained several times with several architectures and several values of the hyper-parameters. I found that training it with 20% validation for 3 epochs and using 'adam' optimizer with a starting learning rate=0.01 and a decay of 0.1 to overcome the problem of over-fitting will give better results. I tired to add dropout layers to prevent over-fitting but I found that it leads to bad results so, I decided not to use dropout to prevent over-fitting but to use a decaying learning rate. After 3 epochs the validation loss was about 0.02.
 ##### 5.4. The model was tested on track one for more than 4 loops, the car did not leave the road. It did very well at curves and difficult textile areas like the bridge. Give a look at this [video](run1.mp4) to see one of its loops.
