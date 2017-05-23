@@ -1,4 +1,4 @@
-#**Behavioral Cloning** 
+#** Behavioral Cloning ** 
 
 ## Writeup Template
 
@@ -18,9 +18,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./test_images/image_1.png "img from three cameras"
-[image2]: ./test_images/image_2.png "cropping imgs"
-[image3]: ./test_images/image_3.png "normalized Image"
+[image1]: test_images/image1.png "img from three cameras"
+[image2]: test_images/image2.png "cropping imgs"
+[image3]: test_images/image3.png "normalized Image"
 
 
 ---
