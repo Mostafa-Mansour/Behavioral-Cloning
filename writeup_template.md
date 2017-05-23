@@ -55,8 +55,9 @@ First, I used the Udacity provided simulator to collect data. As a rule of thumb
 My model is based, basically, on Nvidia model published[here](https://devblogs.nvidia.com/parallelforall/deep-learning-self-driving-cars/) with adding one more convolution layer because a good driver means a good observer and by adding one more convolution layer will allow my network to capture more details that are useful in autonomous driving.
 
 * My model is build as follows (model.py lines: 33-50)
+
 |	layer 			|	size 	|	activation 	|
-|:------------:		|:---------:|:-------------:|
+|:-----------------:|:---------:|:-------------:|
 | convolution		|(20,3,3)	|	elu			|
 | convolution 		|(24,5,5)	|	elu			|
 | convolution 		|(36,5,5)	|	elu			|
