@@ -16,7 +16,7 @@ To meet specifications, the project will require submitting five files:
 * model.py (script used to create and train the model)
 * drive.py (script to drive the car - feel free to modify this file)
 * model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
+* a report writeup file  
 * video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
 
 This README file describes how to output the video in the "Details About Files In This Directory" section.
@@ -47,7 +47,7 @@ The lab enviroment can be created with CarND Term1 Starter Kit. Click [here](htt
 The following resources can be found in this github repository:
 * drive.py
 * video.py
-* writeup_template.md
+* writeup.md
 
 The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
 

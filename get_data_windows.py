@@ -37,19 +37,19 @@ if __name__=='__main__':
     print(x_train.shape)
     print(y_train.shape)
     #hsv=cv2.cvtColor(x_train[0,:,:,:],cv2.COLOR_BGR2HSV)
-    shape_=x_train[0].shape
+    #shape_=x_train[0].shape
     #print(x_train[0].shape)
     #exit()
-    f,(ax1,ax2,ax3)=plt.subplots(1,3,figsize=(20,10))
-    cropped_center=x_train[0][70:shape_[0]][:][:]
+    #f,(ax1,ax2,ax3)=plt.subplots(1,3,figsize=(20,10))
+    #cropped_center=x_train[0][70:shape_[0]][:][:]
     #print(cropped_center.shape)
-    ax1.imshow(cv2.cvtColor((x_train[1][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
-    ax1.set_title("Left camera")
-    ax2.imshow(cv2.cvtColor((x_train[0][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
-    ax2.set_title("Center camera")
-    ax3.imshow(cv2.cvtColor((x_train[2][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
-    ax3.set_title("Right camera")
-    plt.show()
+    #ax1.imshow(cv2.cvtColor((x_train[1][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
+    #ax1.set_title("Left camera")
+    #ax2.imshow(cv2.cvtColor((x_train[0][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
+    #ax2.set_title("Center camera")
+    #ax3.imshow(cv2.cvtColor((x_train[2][70:shape_[0]-30][:][:]),cv2.COLOR_BGR2RGB))
+    #ax3.set_title("Right camera")
+    #plt.show()
 
 
 
